@@ -1,1 +1,4 @@
+python-dotenv
 python-telegram-bot
+sqlmodel
+psycopg2-binary
