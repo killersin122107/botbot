@@ -10,9 +10,12 @@ from app.checker import background_checker
 from sqlmodel import Session, select
 import logging
 
-load_dotenv()
-TOKEN = os.environ.get("TELEGRAM_TOKEN")
-SUBSCRIBERS_FILE = os.environ.get('SUBSCRIBERS_FILE', 'subscribers.json')
+# --- Configuration ---
+# 🚨 SECURITY NOTE: Reads token from environment variable 'TELEGRAM_BOT_TOKEN' if set, 
+# falling back to the hardcoded value for development if needed.
+ENV_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
+HARDCODED_TOKEN = '7988714446:AAHwAd3f0KTI2d3F-PNxtDuuuqYdZr6joJs'
+TOKEN = ENV_TOKEN if ENV_TOKEN else HARDCODED_TOKEN
 
 # Simple utility to persist subscribers
 def load_subscribers():
